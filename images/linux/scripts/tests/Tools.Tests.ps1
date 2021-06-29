@@ -106,7 +106,7 @@ Describe "clang" {
 
         "clang-$ClangVersion --version" | Should -ReturnZeroExitCode
         "clang++-$ClangVersion --version" | Should -ReturnZeroExitCode
-    }   
+    }
 }
 
 Describe "Cmake" {
@@ -328,7 +328,7 @@ Describe "Containers" -Skip:(Test-IsUbuntu16) {
         )
 
         "$ContainerCommand -v" | Should -ReturnZeroExitCode
-    }   
+    }
 }
 
 Describe "nvm" {
@@ -346,7 +346,7 @@ Describe "Python" {
         )
 
         "$PythonCommand --version" | Should -ReturnZeroExitCode
-    }   
+    }
 }
 
 Describe "Ruby" {
@@ -369,5 +369,23 @@ Describe "Ruby" {
         It "Gem <gemName> is installed" -TestCases $gemTestCases {
             "gem list -i '^$gemName$'" | Should -MatchCommandOutput "true"
         }
+    }
+}
+
+Describe "QtIFW" {
+    It "qtifw installerbase" {
+        "installerbase --version" | Should -ReturnZeroExitCode
+    }
+    It "qtifw archivegen" {
+        "archivegen --version" | Should -ReturnZeroExitCode
+    }
+    It "qtifw devtool" {
+        "devtool --version" | Should -ReturnZeroExitCode
+    }
+    It "qtifw repogen" {
+        "repogen --help" | Should -ReturnZeroExitCode
+    }
+    It "qtifw binarycreator" {
+        "binarycreator --help" | Should -ReturnZeroExitCode
     }
 }
